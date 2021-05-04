@@ -99,8 +99,10 @@ const handleNoteDelete = (e) => {
   e.stopPropagation();
 
   const note = e.target;
+  console.log('Note',note);
   const noteId = JSON.parse(note.parentElement.getAttribute('data-note')).id;
-
+  console.log(activeNote);  //shouldn't this have some data in it?
+  console.log(noteId);
   if (activeNote.id === noteId) {
     activeNote = {};
   }
@@ -156,7 +158,7 @@ const renderNoteList = async (notes) => {
       const delBtnEl = document.createElement('i');
       delBtnEl.classList.add(
         'fas',
-        'fa-trash-alt',
+        'fa-trash',
         'float-right',
         'text-danger',
         'delete-note'

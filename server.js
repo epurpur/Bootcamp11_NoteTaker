@@ -32,9 +32,6 @@ app.get('/', (request, response) => response.sendFile(path.join(__dirname, './pu
 //Notes Page
 app.get('/notes', (request, response) => response.sendFile(path.join(__dirname, './public/notes.html')));
 
-//view all notes
-app.get('/api/view', (request, response) => response.json(notes));
-
 //api view of notes
 app.get('/api/notes', (request, response) => response.json(notes));
 
@@ -70,6 +67,7 @@ app.delete('/api/notes/:id', (request, response) => {
     //     }
     // });
 
+    notes = notes.filter(note => note.id != selectedNoteID);
 
     response.end();
 });
