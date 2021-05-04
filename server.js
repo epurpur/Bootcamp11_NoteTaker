@@ -27,14 +27,13 @@ app.use(express.static(__dirname + '/public'));  //loads static css resource
 
 //GET data from database
 //Homepage
-app.get('/', (request, response) => response.sendFile(path.join(__dirname, './public/index.html')));
+app.get('/', (request, response) => response.sendFile(path.join(__dirname, './public/index.html')));   //sends html file upon request
 
 //Notes Page
-app.get('/notes', (request, response) => response.sendFile(path.join(__dirname, './public/notes.html')));
+app.get('/notes', (request, response) => response.sendFile(path.join(__dirname, './public/notes.html')));   //sends html file upon request
 
 //api view of notes
-app.get('/api/notes', (request, response) => response.json(notes));
-
+app.get('/api/notes', (request, response) => response.json(notes));   //sends json data of notes upon request
 
 //POST Data to database
 app.post('/api/notes', (request, response) => {
@@ -43,7 +42,7 @@ app.post('/api/notes', (request, response) => {
     const newNote = request.body
 
     //log data in console
-    console.log(newNote);
+    console.log("Adding Note: ", newNote);
 
     //add data to notes array
     notes.push(newNote);
@@ -58,15 +57,7 @@ app.delete('/api/notes/:id', (request, response) => {
     const selectedNoteID = request.params.id;
     console.log(`Removing item with id: ${selectedNoteID}`);
 
-
     // //remove item from notes array
-    // notes.forEach((item) => {
-    //     if (item.id === selectedNoteID) {
-    //         console.log(item);
-    //         notes.splice(item, 1);
-    //     }
-    // });
-
     notes = notes.filter(note => note.id != selectedNoteID);
 
     response.end();
