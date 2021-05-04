@@ -69,12 +69,29 @@ const handleNoteSave = () => {
   const newNote = {
     title: noteTitle.value,
     text: noteText.value,
+    id: randomID(),
   };
   saveNote(newNote).then(() => {
     getAndRenderNotes();
     renderActiveNote();
   });
 };
+
+//make random 10 character id for each note
+const randomID = () => {
+  const characters = '1234567890abcdefghijklmnopqrstuvwxyz';
+  let characterString = []
+
+  //create 10 characters, push to characterString
+  for (let i of Array(10).keys()) {
+    characterString.push(characters[Math.floor(Math.random() * characters.length)])
+  }
+  
+  //concatenate all items in characterString
+  characterString = characterString.join('');
+  
+  return characterString;
+}
 
 // Delete the clicked note
 const handleNoteDelete = (e) => {
