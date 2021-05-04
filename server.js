@@ -35,7 +35,7 @@ app.get('/notes', (request, response) => response.sendFile(path.join(__dirname, 
 //api view of notes
 app.get('/api/notes', (request, response) => response.json(notes));   //sends json data of notes upon request
 
-//POST Data to database
+//POST Data to database (db.json for this application)
 app.post('/api/notes', (request, response) => {
 
     //add object to notes array

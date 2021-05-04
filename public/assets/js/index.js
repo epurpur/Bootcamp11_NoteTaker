@@ -51,9 +51,13 @@ const deleteNote = (id) =>
     },
   });
 
+
 const renderActiveNote = () => {
+  
+  console.log('Current Active Note:', activeNote)
   hide(saveNoteBtn);
 
+  //in case there is already some note data
   if (activeNote.id) {
     noteTitle.setAttribute('readonly', true);
     noteText.setAttribute('readonly', true);
@@ -99,10 +103,8 @@ const handleNoteDelete = (e) => {
   e.stopPropagation();
 
   const note = e.target;
-  console.log('Note',note);
   const noteId = JSON.parse(note.parentElement.getAttribute('data-note')).id;
-  console.log(activeNote);  //shouldn't this have some data in it?
-  console.log(noteId);
+
   if (activeNote.id === noteId) {
     activeNote = {};
   }
@@ -113,8 +115,11 @@ const handleNoteDelete = (e) => {
   });
 };
 
+
 // Sets the activeNote and displays it
+//it doesnt seem like this ever happens?
 const handleNoteView = (e) => {
+  console.log('Hello world!');
   e.preventDefault();
   activeNote = JSON.parse(e.target.parentElement.getAttribute('data-note'));
   renderActiveNote();
@@ -136,7 +141,9 @@ const handleRenderSaveBtn = () => {
 
 // Render the list of note titles
 const renderNoteList = async (notes) => {
+  //gets JSON of each note object
   let jsonNotes = await notes.json();
+
   if (window.location.pathname === '/notes') {
     noteList.forEach((el) => (el.innerHTML = ''));
   }
