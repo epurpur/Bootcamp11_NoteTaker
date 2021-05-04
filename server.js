@@ -56,17 +56,20 @@ app.post('/api/notes', (request, response) => {
 
 
 //DELETE Data from database
-app.delete('/api/notes', (request, response) => {
-    console.log("DELETE request called");
+app.delete('/api/notes/:id', (request, response) => {
+
+    const selectedNoteID = request.params.id;
+    console.log(`Removing item with id: ${selectedNoteID}`);
 
 
-    //remove item from notes array
-    notes.forEach((item) => {
-        if (item.id === 12348) {
-            console.log(item);
-            notes.splice(item, 1);
-        }
-    });
+    // //remove item from notes array
+    // notes.forEach((item) => {
+    //     if (item.id === selectedNoteID) {
+    //         console.log(item);
+    //         notes.splice(item, 1);
+    //     }
+    // });
+
 
     response.end();
 });
