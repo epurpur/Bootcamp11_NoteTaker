@@ -27,10 +27,10 @@ app.use(express.static(__dirname + '/public'));  //loads static resources
 
 //GET data from database
 //Homepage
-app.get('/', (request, response) => response.sendFile(path.join(__dirname, './public/index.html')));   //sends html file upon request
+app.get('/', (request, response) => response.sendFile(path.join(__dirname, '/public/index.html')));   //sends html file upon request
 
 //Notes Page
-app.get('/notes', (request, response) => response.sendFile(path.join(__dirname, './public/notes.html')));   //sends html file upon request
+app.get('/notes', (request, response) => response.sendFile(path.join(__dirname, '/public/notes.html')));   //sends html file upon request
 
 //api view of notes
 app.get('/api/notes', (request, response) => response.json(notes));   //sends json data of notes upon request
