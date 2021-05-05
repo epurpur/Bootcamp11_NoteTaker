@@ -13,11 +13,11 @@ notes = JSON.parse(notes);
 
 
 const app = express();
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(__dirname + '/public'));  //loads static css resource
+app.use(express.static(__dirname + '/public'));  //loads static resources
 
 
 
