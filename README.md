@@ -44,3 +44,9 @@
 
   For issues, questions, and comments please contact epurpur@gmail.com or visit [https://github.com/epurpur](https://github.com/epurpur) 
   
+  ## Preview
+  
+  ![](./public/assets/images/NotetakerHome.png)
+  
+  ![](./public/assets/images/NotetakerNotes.png)
+  
